@@ -1,0 +1,133 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 215 25% 27%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom colors for the industrial theme */
+    --industrial-blue: 220 100% 50%;
+    --industrial-dark: 215 25% 27%;
+    --industrial-gray: 220 9% 46%;
+    --italian-green: 142 76% 36%;
+    --italian-red: 0 84% 60%;
+    --machinery-silver: 210 11% 71%;
+  }
+
+  .dark {
+    --background: 215 28% 17%;
+    --foreground: 0 0% 95%;
+
+    --card: 215 28% 17%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 215 28% 17%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 220 100% 50%;
+    --primary-foreground: 215 28% 17%;
+
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 217 10% 64%;
+
+    --accent: 215 28% 17%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 220 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .italian-gradient {
+    background: linear-gradient(135deg, hsl(var(--italian-green)) 0%, hsl(var(--background)) 50%, hsl(var(--italian-red)) 100%);
+  }
+
+  .industrial-gradient {
+    background: linear-gradient(135deg, hsl(var(--industrial-blue)) 0%, hsl(var(--industrial-dark)) 100%);
+  }
+
+  .machinery-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Custom animations for industrial feel */
+@keyframes machinery-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-machinery-spin {
+  animation: machinery-spin 20s linear infinite;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out;
+}
