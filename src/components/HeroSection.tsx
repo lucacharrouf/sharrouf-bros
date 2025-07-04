@@ -1,6 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -9,32 +9,35 @@ const HeroSection = () => {
       <div className="relative container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-in-left">
-            Premium Italian
+            Woodworking Technology
             <span className="block text-transparent bg-clip-text italian-gradient">
-              Woodworking Machinery
+              for the Middle East
             </span>
-            for the Middle East
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
-            Authorized SCM dealer providing cutting-edge Italian woodworking solutions, 
+            Authorized SCM dealer providing state of art Italian woodworking solutions, 
             complete service support, and genuine spare parts across Lebanon and the Middle East.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-white text-industrial-dark hover:bg-gray-100 text-lg px-8 py-4">
-              View Our Products
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-industrial-dark text-lg px-8 py-4">
-              Get Free Quote
-            </Button>
+            <Link to="/products">
+              <Button size="lg" className="bg-white text-industrial-dark hover:bg-gray-100 text-lg px-8 py-4">
+                View Our Products
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="outline" size="lg" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-industrial-dark text-lg px-8 py-4">
+                Get Free Quote
+              </Button>
+            </Link>
           </div>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-white">25+</div>
+              <div className="text-3xl font-bold text-white">15+</div>
               <div className="text-gray-300">Years Experience</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">500+</div>
+              <div className="text-3xl font-bold text-white">5000+</div>
               <div className="text-gray-300">Machines Sold</div>
             </div>
             <div>
@@ -42,8 +45,8 @@ const HeroSection = () => {
               <div className="text-gray-300">Authorized Dealer</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">24/7</div>
-              <div className="text-gray-300">Support</div>
+              <div className="text-3xl font-bold text-white">100%</div>
+              <div className="text-gray-300">Expert Support</div>
             </div>
           </div>
         </div>

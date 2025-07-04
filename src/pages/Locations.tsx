@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -67,10 +66,10 @@ const Locations = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-industrial-gradient text-white py-20">
+      <section className="bg-industrial-dark text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Locations</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">Our Locations</h1>
+          <p className="text-xl max-w-3xl mx-auto text-gray-200">
             Strategically positioned across Lebanon to serve the entire Middle East region 
             with premium Italian woodworking machinery and comprehensive support services.
           </p>
@@ -148,12 +147,15 @@ const Locations = () => {
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-4 pt-4">
-                        <Button className="bg-industrial-blue hover:bg-industrial-blue/90">
-                          Get Directions
-                        </Button>
-                        <Button variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
-                          Schedule Visit
+                      <div className="pt-4">
+                        <Button 
+                          className="w-full bg-industrial-blue hover:bg-industrial-blue/90"
+                          onClick={() => {
+                            const address = encodeURIComponent(location.address);
+                            window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+                          }}
+                        >
+                          View on Map
                         </Button>
                       </div>
                     </CardContent>

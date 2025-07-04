@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -22,12 +21,26 @@ const SCMPartnershipSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <Card className="machinery-shadow border-0">
-              <CardContent className="p-0">
-                <div className="bg-gradient-to-br from-italian-green via-white to-italian-red h-64 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl font-bold text-industrial-dark mb-2">SCM</div>
-                    <div className="text-lg text-industrial-gray">Authorized Dealer</div>
-                    <div className="w-16 h-1 bg-industrial-blue mx-auto mt-4"></div>
+              <CardContent className="p-8">
+                <div className="bg-white rounded-lg flex items-center justify-center min-h-[200px] p-4">
+                  <div className="text-center w-full">
+                    <img 
+                      src="/images/scm-logo.svg" 
+                      alt="SCM Woodworking Technology Logo" 
+                      className="w-full h-auto mx-auto"
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'block';
+                      }}
+                    />
+                    <div className="hidden">
+                      <div className="text-6xl font-bold text-industrial-dark mb-2">SCM</div>
+                      <div className="text-lg text-industrial-gray">Authorized Dealer</div>
+                      <div className="w-16 h-1 bg-industrial-blue mx-auto mt-4"></div>
+                    </div>
                   </div>
                 </div>
               </CardContent>

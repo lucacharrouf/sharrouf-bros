@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone } from "lucide-react";
@@ -7,16 +6,16 @@ const LocationsSection = () => {
   const locations = [
     {
       name: "Beirut Showroom",
-      address: "Industrial District, Beirut, Lebanon",
-      phone: "+961 1 234 567",
-      hours: "Mon-Fri: 8:00 AM - 6:00 PM\nSat: 8:00 AM - 2:00 PM",
+      address: "ICF Building - Mkalles-Mansourieh Main Road - Beirut, Lebanon",
+      phone: "+961 71 667 838",
+      hours: "Mon-Sat: 8:00 AM - 6:00 PM",
       description: "Main showroom and service center with full machinery display",
     },
     {
       name: "Rachaya Service Center",
-      address: "Industrial Zone, Rachaya, Lebanon", 
-      phone: "+961 8 123 456",
-      hours: "Mon-Fri: 8:00 AM - 5:00 PM\nSat: 8:00 AM - 1:00 PM",
+      address: "Main Road El Mhaidthe, Rachaya Bekaa, Lebanon", 
+      phone: "+961 71 667 838",
+      hours: "Mon-Fri: 8:00 AM - 6:00 PM",
       description: "Service center specializing in maintenance and spare parts",
     },
   ];
@@ -34,7 +33,7 @@ const LocationsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-8">
           {locations.map((location, index) => (
             <Card key={index} className="machinery-shadow hover:shadow-2xl transition-shadow duration-300">
               <CardHeader>
@@ -59,23 +58,24 @@ const LocationsSection = () => {
                     {location.hours}
                   </div>
                 </div>
-                <div className="pt-4 space-y-2">
-                  <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
+                <div className="pt-4">
+                  <Button 
+                    className="w-full bg-industrial-blue hover:bg-industrial-blue/90"
+                    onClick={() => {
+                      if (location.name === "Rachaya Service Center") {
+                        window.open('https://maps.app.goo.gl/xTbmC93tazsXx3wc7', '_blank');
+                      } else {
+                        const address = encodeURIComponent(location.address);
+                        window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+                      }
+                    }}
+                  >
                     View on Map
-                  </Button>
-                  <Button variant="outline" className="w-full">
-                    Get Directions
                   </Button>
                 </div>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center">
-          <Button size="lg" variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
-            View All Locations
-          </Button>
         </div>
       </div>
     </section>
