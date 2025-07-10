@@ -6,8 +6,56 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleQuoteSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const quoteData = {
+      first_name: formData.get('firstName') as string,
+      last_name: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      company_name: formData.get('company') as string,
+      machine_category: formData.get('machineCategory') as string,
+      production_volume: formData.get('productionVolume') as string,
+      project_details: formData.get('projectDetails') as string,
+    };
+
+    try {
+      const { error } = await supabase
+        .from('requested_quotes')
+        .insert([quoteData]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Quote Request Submitted",
+        description: "Thank you! We'll get back to you within 24 hours with a detailed quote.",
+      });
+      
+      // Reset form
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error('Error submitting quote:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit quote request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const contactMethods = [
     {
       title: "Phone Support",
@@ -188,32 +236,32 @@ const Contact = () => {
                 </p>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleQuoteSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-industrial-dark">First Name *</label>
-                      <Input placeholder="Your first name" required />
+                      <Input name="firstName" placeholder="Your first name" required />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-industrial-dark">Last Name *</label>
-                      <Input placeholder="Your last name" required />
+                      <Input name="lastName" placeholder="Your last name" required />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Business Email *</label>
-                    <Input type="email" placeholder="your.email@company.com" required />
+                    <Input name="email" type="email" placeholder="your.email@company.com" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Phone *</label>
-                    <Input type="tel" placeholder="+961 XX XXX XXX" required />
+                    <Input name="phone" type="tel" placeholder="+961 XX XXX XXX" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Company Name *</label>
-                    <Input placeholder="Your company name" required />
+                    <Input name="company" placeholder="Your company name" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Machine Category</label>
-                    <Select>
+                    <Select name="machineCategory">
                       <SelectTrigger>
                         <SelectValue placeholder="Select machinery type" />
                       </SelectTrigger>
@@ -231,7 +279,7 @@ const Contact = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Production Volume</label>
-                    <Select>
+                    <Select name="productionVolume">
                       <SelectTrigger>
                         <SelectValue placeholder="Select production volume" />
                       </SelectTrigger>
@@ -246,13 +294,18 @@ const Contact = () => {
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Project Details *</label>
                     <Textarea 
+                      name="projectDetails"
                       placeholder="Describe your requirements, timeline, and any specific needs..."
                       rows={4}
                       required
                     />
                   </div>
-                  <Button className="w-full bg-italian-green hover:bg-italian-green/90">
-                    Request Quote
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-italian-green hover:bg-italian-green/90"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Request Quote"}
                   </Button>
                 </form>
               </CardContent>
