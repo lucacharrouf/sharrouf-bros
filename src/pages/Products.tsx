@@ -98,7 +98,7 @@ const Products = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-industrial-dark text-white py-20">
+      <section className="bg-[#02294e] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">Product Catalog</h1>
           <p className="text-xl max-w-3xl mx-auto text-gray-200">
@@ -190,7 +190,7 @@ const Products = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-industrial-dark text-white">
+      <section className="py-20 bg-[#02294e] text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Need Help Choosing?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">

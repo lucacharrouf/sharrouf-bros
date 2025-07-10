@@ -54,7 +54,7 @@ const ProductsShowcase = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {productCategories.map((product, index) => (
-            <Card key={index} className="machinery-shadow hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+            <Card key={index} className="machinery-shadow hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full flex flex-col">
               <div className="relative">
                 <img 
                   src={product.image} 
@@ -68,7 +68,7 @@ const ProductsShowcase = () => {
               <CardHeader>
                 <CardTitle className="text-industrial-dark">{product.name}</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex flex-col flex-1">
                 <p className="text-industrial-gray mb-4">{product.description}</p>
                 <ul className="text-sm space-y-1 mb-6">
                   {product.features.map((feature, idx) => (
@@ -78,11 +78,13 @@ const ProductsShowcase = () => {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90" asChild>
-                  <Link to={`/products?category=${encodeURIComponent(product.categoryFilter)}`}>
-                    View Details
-                  </Link>
-                </Button>
+                <div className="mt-auto pt-2">
+                  <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90" asChild>
+                    <Link to={`/products?category=${encodeURIComponent(product.categoryFilter)}`}>
+                      View Details
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}

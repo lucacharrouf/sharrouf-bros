@@ -45,9 +45,11 @@ const Header = () => {
         {/* Main navigation */}
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-industrial-blue rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">SB</span>
-            </div>
+            <img 
+              src="/images/SBlogo.jpeg" 
+              alt="Sharrouf Bros Logo" 
+              className="w-12 h-12 object-cover rounded-t-md"
+            />
             <div>
               <h1 className="text-xl font-bold text-industrial-dark">Sharrouf Bros</h1>
               <p className="text-sm text-industrial-gray">SCM Authorized Dealer</p>

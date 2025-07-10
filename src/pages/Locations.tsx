@@ -53,12 +53,8 @@ const Locations = () => {
   ];
 
   const serviceAreas = [
-    { country: "Lebanon", coverage: "Complete Coverage", description: "Full sales, service, and support" },
-    { country: "Syria", coverage: "Sales & Support", description: "Machinery sales and technical support" },
-    { country: "Jordan", coverage: "Sales & Parts", description: "New machinery and spare parts delivery" },
-    { country: "Iraq", coverage: "Sales Support", description: "Machinery consultation and sales" },
-    { country: "Palestine", coverage: "Limited Service", description: "Parts and technical consultation" },
-    { country: "Cyprus", coverage: "Sales Support", description: "Equipment sales and basic support" }
+    { region: "Middle East", coverage: "Complete Coverage", description: "Full sales, service, and support across all Middle Eastern countries" },
+    { region: "Africa", coverage: "Sales & Support", description: "Machinery sales and technical support throughout Africa" }
   ];
 
   return (
@@ -66,7 +62,7 @@ const Locations = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-industrial-dark text-white py-20">
+      <section className="bg-[#02294e] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">Our Locations</h1>
           <p className="text-xl max-w-3xl mx-auto text-gray-200">
@@ -173,16 +169,16 @@ const Locations = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-industrial-dark mb-6">Regional Coverage</h2>
             <p className="text-xl text-industrial-gray max-w-3xl mx-auto">
-              Our service network extends across the Middle East, providing support wherever you need it
+              Our service network extends across the Middle East and Africa, providing support wherever you need it
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {serviceAreas.map((area, index) => (
               <Card key={index} className="machinery-shadow hover:shadow-2xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    <span className="text-industrial-dark">{area.country}</span>
+                    <span className="text-industrial-dark">{area.region}</span>
                     <span className="text-sm bg-industrial-blue text-white px-3 py-1 rounded-full">
                       {area.coverage}
                     </span>
@@ -198,51 +194,31 @@ const Locations = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-industrial-dark text-white">
+      <section className="py-20 bg-[#02294e] text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Planning a Visit?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Schedule an appointment to see our machinery and discuss your specific requirements with our experts.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-italian-green hover:bg-italian-green/90">
-              Schedule Showroom Visit
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-industrial-dark">
-              Request On-Site Demo
-            </Button>
+          <div className="flex justify-center mb-12">
+            <a 
+              href="https://wa.me/96171667838" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors inline-block"
+            >
+              Schedule an Appointment via WhatsApp
+            </a>
           </div>
           
-          <div className="mt-12 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-2">Beirut Showroom</h3>
-              <p className="text-gray-300 mb-2">+961 71 667 838</p>
-              <p className="text-sm text-gray-600 mb-2">
-                <strong>WhatsApp:</strong> +961 71 667 838
-              </p>
-              <a 
-                href="https://wa.me/96171667838" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors inline-block"
-              >
-                Chat on WhatsApp
-              </a>
+              <p className="text-gray-300">+961 71 667 838</p>
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-semibold mb-2">Rachaya Service Center</h3>
-              <p className="text-gray-300 mb-2">+961 71 667 838</p>
-              <p className="text-sm text-gray-600 mb-2">
-                <strong>WhatsApp:</strong> +961 71 667 838
-              </p>
-              <a 
-                href="https://wa.me/96171667838" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors inline-block"
-              >
-                Chat on WhatsApp
-              </a>
+              <h3 className="text-xl font-semibold mb-2">Rachaya Showroom</h3>
+              <p className="text-gray-300">+961 71 667 838</p>
             </div>
           </div>
         </div>

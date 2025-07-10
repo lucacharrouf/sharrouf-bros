@@ -61,7 +61,7 @@ const About = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-industrial-dark text-white py-20">
+      <section className="bg-[#02294e] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">About Sharrouf Bros</h1>
           <p className="text-xl max-w-3xl mx-auto text-gray-200">
@@ -176,7 +176,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-industrial-dark text-white">
+      <section className="py-20 bg-[#02294e] text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Our Values</h2>
