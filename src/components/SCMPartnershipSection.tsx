@@ -25,9 +25,9 @@ const SCMPartnershipSection = () => {
                 <div className="bg-white rounded-lg flex items-center justify-center min-h-[200px] p-4">
                   <div className="text-center w-full">
                     <img 
-                      src="/images/scm-logo.svg" 
+                      src="https://www.scmgroup.com/images/scm-logo.png" 
                       alt="SCM Woodworking Technology Logo" 
-                      className="w-full h-auto mx-auto"
+                      className="w-full h-auto mx-auto max-w-md"
                       onError={(e) => {
                         // Fallback to text if image fails to load
                         const target = e.currentTarget as HTMLImageElement;

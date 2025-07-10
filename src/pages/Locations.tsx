@@ -8,15 +8,15 @@ const Locations = () => {
   const locations = [
     {
       name: "Beirut Showroom & Service Center",
-      address: "Industrial District, Sin el Fil, Beirut, Lebanon",
-      phone: "+961 1 234 567",
-      email: "beirut@sharroufbros.com",
+      address: "ICF Building - Mkalles-Mansourieh Main Road - Beirut, Lebanon",
+      phone: "+961 71 667 838",
+      email: "info@sharroufbros.com",
       hours: {
-        weekdays: "Monday - Friday: 8:00 AM - 6:00 PM",
-        saturday: "Saturday: 8:00 AM - 2:00 PM",
+        weekdays: "Monday - Saturday: 8:00 AM - 6:00 PM",
+        saturday: "",
         sunday: "Sunday: Closed"
       },
-      description: "Our main showroom featuring the complete range of SCM machinery with full service capabilities.",
+      description: "Main showroom and service center with full machinery display",
       features: [
         "Complete Machinery Showroom",
         "Full Service & Repair Center", 
@@ -30,15 +30,15 @@ const Locations = () => {
     },
     {
       name: "Rachaya Service Center",
-      address: "Industrial Zone, Rachaya, Bekaa Valley, Lebanon",
-      phone: "+961 8 123 456",
-      email: "rachaya@sharroufbros.com", 
+      address: "Main Road El Mhaidthe, Rachaya Bekaa, Lebanon",
+      phone: "+961 71 667 838",
+      email: "info@sharroufbros.com", 
       hours: {
-        weekdays: "Monday - Friday: 8:00 AM - 5:00 PM",
-        saturday: "Saturday: 8:00 AM - 1:00 PM",
+        weekdays: "Monday - Friday: 8:00 AM - 6:00 PM",
+        saturday: "",
         sunday: "Sunday: Closed"
       },
-      description: "Specialized service center focusing on maintenance, repairs, and spare parts distribution.",
+      description: "Service center specializing in maintenance and spare parts",
       features: [
         "Specialized Service Center",
         "Emergency Repair Services",
@@ -127,7 +127,7 @@ const Locations = () => {
                           <Clock className="h-5 w-5 text-industrial-blue mt-1" />
                           <div className="text-industrial-gray">
                             <div>{location.hours.weekdays}</div>
-                            <div>{location.hours.saturday}</div>
+                            {location.hours.saturday && <div>{location.hours.saturday}</div>}
                             <div>{location.hours.sunday}</div>
                           </div>
                         </div>
@@ -202,7 +202,7 @@ const Locations = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Planning a Visit?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Schedule an appointment to see our machinery in action and discuss your specific requirements with our experts.
+            Schedule an appointment to see our machinery and discuss your specific requirements with our experts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-italian-green hover:bg-italian-green/90">
@@ -216,26 +216,32 @@ const Locations = () => {
           <div className="mt-12 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-2">Beirut Showroom</h3>
-              <p className="text-gray-300 mb-2">+961 1 234 567</p>
+              <p className="text-gray-300 mb-2">+961 71 667 838</p>
+              <p className="text-sm text-gray-600 mb-2">
+                <strong>WhatsApp:</strong> +961 71 667 838
+              </p>
               <a 
-                href="https://wa.me/9611234567" 
+                href="https://wa.me/96171667838" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-300 transition-colors"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors inline-block"
               >
-                WhatsApp: +961 1 234 567
+                Chat on WhatsApp
               </a>
             </div>
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-2">Rachaya Service Center</h3>
-              <p className="text-gray-300 mb-2">+961 8 123 456</p>
+              <p className="text-gray-300 mb-2">+961 71 667 838</p>
+              <p className="text-sm text-gray-600 mb-2">
+                <strong>WhatsApp:</strong> +961 71 667 838
+              </p>
               <a 
-                href="https://wa.me/9618123456" 
+                href="https://wa.me/96171667838" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-300 transition-colors"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors inline-block"
               >
-                WhatsApp: +961 8 123 456
+                Chat on WhatsApp
               </a>
             </div>
           </div>

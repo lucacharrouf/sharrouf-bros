@@ -1,37 +1,41 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const ProductsShowcase = () => {
   const productCategories = [
     {
-      name: "Panel Saws",
-      description: "Precision panel saws for accurate cutting of wood panels and boards",
-      image: "https://images.unsplash.com/photo-1606142969519-89f70c1b5b53?w=400&h=300&fit=crop",
+      name: "Beam Saws",
+      description: "Ideal solution for small-sized companies. Single-blade beam saw with PC/PLC control system for cutting solid wood panels, chipboards, MDF, and multilayer panels.",
+      image: "/images/beam_saw.avif",
       badge: "Best Seller",
-      features: ["Digital Display", "Automatic Feed", "Dust Collection"],
+      features: ["PC/PLC Control System", "Panel Stack Cutting", "Flexstore Integration"],
+      categoryFilter: "Panel Saws",
     },
     {
       name: "Edge Banders",
-      description: "Professional edge banding machines for perfect finishing",
-      image: "https://images.unsplash.com/photo-1612437169020-3b6a4c70be0d?w=400&h=300&fit=crop",
+      description: "Industrial edge bander designed for highest quality processing on any panel and material. Highly configurable for continuous operation with Electronic Touch technology and flexible integration capabilities.",
+      image: "/images/edge-bander.avif",
       badge: "New Arrival",
-      features: ["Pre-milling Unit", "Corner Rounding", "Scraper Unit"],
+      features: ["Electronic Touch Technology", "Multi-Shift Operation", "Flexible Integration"],
+      categoryFilter: "Edge Banders",
     },
     {
       name: "CNC Routers",
-      description: "Advanced CNC routing systems for complex woodworking operations",
-      image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=400&h=300&fit=crop",
+      description: "Highly modular machining centre providing solutions for all woodworking challenges. Run by Suite Maestro with specific modules for every production cycle, offering unrivalled price-performance ratio and flexible configuration.",
+      image: "/images/CNC.avif",
       badge: "High Tech",
       features: ["5-Axis Capability", "Automatic Tool Change", "Vacuum Clamping"],
+      categoryFilter: "CNC Routers",
     },
     {
-      name: "Boring Machines",
-      description: "High-precision boring machines for cabinet and furniture production",
-      image: "https://images.unsplash.com/photo-1587560699386-d8f3a8b0b4ea?w=400&h=300&fit=crop",
+      name: "Drilling Machines",
+      description: "Morbidelli ux range combines through-feed drilling efficiency with machining centre flexibility. Designed for drilling, routing and grooving operations with simultaneous dual-panel processing and versatile automation options.",
+      image: "/images/boring.avif",
       badge: "Professional",
       features: ["Multi-spindle", "Pneumatic Clamping", "Quick Setup"],
+      categoryFilter: "Boring Machines",
     },
   ];
 
@@ -74,8 +78,10 @@ const ProductsShowcase = () => {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
-                  View Details
+                <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90" asChild>
+                  <Link to={`/products?category=${encodeURIComponent(product.categoryFilter)}`}>
+                    View Details
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -83,11 +89,8 @@ const ProductsShowcase = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-industrial-blue hover:bg-industrial-blue/90 mr-4">
-            View All Products
-          </Button>
-          <Button size="lg" variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
-            Download Catalog
+          <Button size="lg" className="bg-industrial-blue hover:bg-industrial-blue/90 mr-4" asChild>
+            <Link to="/products">View All Products</Link>
           </Button>
         </div>
       </div>

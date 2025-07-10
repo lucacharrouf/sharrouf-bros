@@ -3,17 +3,18 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const mainServices = [
     {
       title: "Machinery Sales",
-      description: "Complete range of SCM woodworking machinery for all industrial applications",
+      description: "Complete range of woodworking machinery for all industrial applications",
       icon: "🏭",
       features: [
-        "New Machine Sales with Full Warranty",
+        "New and Used Machine Sales",
         "Custom Machine Configurations",
-        "Flexible Financing Options",
+        "Pay with Installment Options",
         "Professional Delivery & Installation",
         "Complete Setup & Commissioning",
         "Operator Training Programs"
@@ -25,7 +26,7 @@ const Services = () => {
       description: "Genuine SCM spare parts with fast delivery across the Middle East",
       icon: "⚙️",
       features: [
-        "100% Genuine SCM Parts Only",
+        "100% Genuine Parts Only",
         "Same-Day Shipping Available",
         "Comprehensive Parts Inventory",
         "Technical Parts Identification",
@@ -158,8 +159,8 @@ const Services = () => {
                   <div className="bg-muted/50 p-4 rounded-lg mb-6">
                     <p className="text-industrial-dark font-medium">{service.benefits}</p>
                   </div>
-                  <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
-                    Learn More
+                  <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90" asChild>
+                    <Link to="/contact">Learn More</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -199,8 +200,8 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full ${pkg.popular ? 'bg-industrial-blue hover:bg-industrial-blue/90' : 'bg-industrial-gray hover:bg-industrial-gray/90'}`}>
-                    Select Package
+                  <Button className={`w-full ${pkg.popular ? 'bg-industrial-blue hover:bg-industrial-blue/90' : 'bg-industrial-gray hover:bg-industrial-gray/90'}`} asChild>
+                    <Link to="/contact">Select Package</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -246,11 +247,11 @@ const Services = () => {
             Let our experts help you choose the right service package for your machinery needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-italian-green hover:bg-italian-green/90">
-              Schedule Service Consultation
+            <Button size="lg" className="bg-italian-green hover:bg-italian-green/90" asChild>
+              <Link to="/contact">Schedule Service Consultation</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-industrial-dark">
-              Download Service Guide
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-industrial-dark" asChild>
+              <Link to="/contact">Get Quote</Link>
             </Button>
           </div>
         </div>

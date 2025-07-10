@@ -16,7 +16,7 @@ const HeroSection = () => {
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
             Authorized SCM dealer providing state of art Italian woodworking solutions, 
-            complete service support, and genuine spare parts across Lebanon and the Middle East.
+            complete service support, and genuine spare parts across Lebanon, the Middle East, and Africa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/products">

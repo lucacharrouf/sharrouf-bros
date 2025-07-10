@@ -1,10 +1,9 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 
 const WhyChooseUsSection = () => {
   const reasons = [
     {
-      title: "25+ Years Experience",
+      title: "20+ Years Experience",
       description: "Over two decades of expertise in woodworking machinery and industrial solutions",
       icon: "🏆",
     },
@@ -14,8 +13,8 @@ const WhyChooseUsSection = () => {
       icon: "🤝",
     },
     {
-      title: "Local Expertise",
-      description: "Deep understanding of Middle East market needs and business requirements",
+      title: "Global Expertise",
+      description: "Deep understanding of Middle East and African market needs and business requirements",
       icon: "🌍",
     },
     {
@@ -29,7 +28,7 @@ const WhyChooseUsSection = () => {
       icon: "⚡",
     },
     {
-      title: "24/7 Support",
+      title: "24/7 Ticket Support",
       description: "Round-the-clock technical support to minimize downtime and maximize productivity",
       icon: "📞",
     },
@@ -62,20 +61,14 @@ const WhyChooseUsSection = () => {
 
         <div className="text-center">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Workshop?</h3>
+            <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Workspace?</h3>
             <p className="text-gray-300 mb-6">
-              Join hundreds of satisfied customers across the Middle East who trust 
+              Join thousands of satisfied customers across the Middle East and Africa who trust 
               Sharrouf Bros for their woodworking machinery needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="tel:+9611234567" 
-                className="bg-italian-green hover:bg-italian-green/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Call Now: +961 1 234 567
-              </a>
-              <a 
-                href="https://wa.me/9611234567" 
+                href="https://wa.me/96171667838" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"

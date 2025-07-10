@@ -1,18 +1,18 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
   const services = [
     {
       title: "Machinery Sales",
-      description: "Complete range of SCM woodworking machinery for all industrial applications",
-      features: ["New Machine Sales", "Custom Configurations", "Financing Options", "Delivery & Installation"],
+      description: "Complete range of woodworking machinery for all industrial applications",
+      features: ["New and Used Machine Sales", "Custom Configurations", "Installment Options", "Delivery & Installation"],
       icon: "🏭",
     },
     {
       title: "Spare Parts",
-      description: "Genuine SCM spare parts with fast delivery across the Middle East",
+      description: "Spare parts with fast delivery across the Middle East",
       features: ["Original Parts Only", "Fast Shipping", "Technical Support", "Parts Identification"],
       icon: "⚙️",
     },
@@ -25,7 +25,7 @@ const ServicesSection = () => {
     {
       title: "Technical Support",
       description: "Expert technical support from SCM-trained technicians",
-      features: ["24/7 Support Hotline", "Remote Diagnostics", "On-site Service", "Training Programs"],
+      features: ["24/7 Ticket Support", "Remote Diagnostics", "On-site Service", "Training Programs"],
       icon: "📞",
     },
   ];
@@ -66,11 +66,11 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-industrial-blue hover:bg-industrial-blue/90 mr-4">
-            Request Service
+          <Button size="lg" className="bg-industrial-blue hover:bg-industrial-blue/90 mr-4" asChild>
+            <Link to="/contact">Request Service</Link>
           </Button>
-          <Button size="lg" variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
-            Learn More
+          <Button size="lg" variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white" asChild>
+            <Link to="/services">Learn More</Link>
           </Button>
         </div>
       </div>

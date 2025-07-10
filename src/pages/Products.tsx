@@ -5,11 +5,21 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Products = () => {
+  const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Set category filter from URL params on component mount
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    if (categoryParam && categoryParam !== "all") {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
 
   const products = [
     {
@@ -90,7 +100,7 @@ const Products = () => {
       {/* Hero Section */}
       <section className="bg-industrial-dark text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">SCM Product Catalog</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">Product Catalog</h1>
           <p className="text-xl max-w-3xl mx-auto text-gray-200">
             Discover our complete range of premium Italian woodworking machinery, 
             engineered for precision, reliability, and maximum productivity.
@@ -189,9 +199,6 @@ const Products = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-italian-green hover:bg-italian-green/90">
               Schedule Consultation
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-industrial-dark">
-              Download Full Catalog
             </Button>
           </div>
         </div>

@@ -5,38 +5,31 @@ import { Badge } from "@/components/ui/badge";
 
 const About = () => {
   const milestones = [
-    { year: "1998", event: "Sharrouf Bros founded in Lebanon" },
-    { year: "2003", event: "Became authorized SCM dealer" },
-    { year: "2008", event: "Opened Rachaya service center" },
-    { year: "2015", event: "Expanded to full Middle East coverage" },
-    { year: "2020", event: "Achieved SCM Premium Partner status" },
-    { year: "2024", event: "25+ years of excellence continues" },
+    { year: "2010", event: "Sharrouf Bros founded in Lebanon" },
+    { year: "2015", event: "Became authorized SCM dealer" },
+    { year: "2015", event: "Achieved SCM Premium Partner status" },
+    { year: "2024", event: "Opened showroom in Beirut" },
+    { year: "2025", event: "15+ years of excellence continues" },
   ];
 
   const team = [
     {
-      name: "Ahmad Sharrouf",
-      position: "Founder & CEO",
+      name: "Imad Sharrouf",
+      position: "Co-Founder",
       description: "25+ years of experience in woodworking machinery industry",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop"
     },
     {
-      name: "Michel Sharrouf",
-      position: "Technical Director", 
+      name: "Sharrouf Sharrouf",
+      position: "Co-Founder", 
       description: "SCM-certified technician with extensive European training",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop"
     },
     {
-      name: "Samir Khoury",
-      position: "Sales Manager",
+      name: "Ahmad Hamdam",
+      position: "Engineer",
       description: "15+ years helping customers find the perfect machinery solutions",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop"
-    },
-    {
-      name: "Fatima Al-Hassan",
-      position: "Service Coordinator",
-      description: "Expert in parts management and customer service excellence",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c35e5c8e?w=300&h=300&fit=crop"
     },
   ];
 

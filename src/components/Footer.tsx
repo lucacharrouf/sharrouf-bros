@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-300 mb-4">
               Premium Italian woodworking machinery for the Middle East. 
-              Over 25 years of excellence in sales, service, and support.
+              Over 15 years of excellence in sales, service, and support.
             </p>
             <div className="flex space-x-2">
               <div className="w-6 h-4 bg-italian-green rounded-sm"></div>
@@ -62,8 +62,8 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-industrial-blue mt-1" />
                 <div>
-                  <p className="text-white font-medium">Beirut: +961 1 234 567</p>
-                  <p className="text-gray-300 text-sm">Rachaya: +961 8 123 456</p>
+                  <p className="text-white font-medium">Beirut: +961 71 667 838</p>
+                  <p className="text-gray-300 text-sm">Rachaya: +961 71 667 838</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
@@ -90,7 +90,6 @@ const Footer = () => {
             <div className="flex space-x-6 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Sitemap</a>
             </div>
           </div>
         </div>
