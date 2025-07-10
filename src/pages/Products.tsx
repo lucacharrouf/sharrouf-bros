@@ -7,6 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import RequestQuoteForm from "@/components/RequestQuoteForm";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
@@ -139,7 +141,7 @@ const Products = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <Card key={product.id} className="machinery-shadow hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+              <Card key={product.id} className="machinery-shadow hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full flex flex-col">
                 <div className="relative">
                   <img 
                     src={product.image} 
@@ -154,7 +156,7 @@ const Products = () => {
                   <CardTitle className="text-industrial-dark">{product.name}</CardTitle>
                   <Badge variant="secondary" className="w-fit">{product.category}</Badge>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex flex-col flex-1">
                   <p className="text-industrial-gray mb-4">{product.description}</p>
                   <ul className="text-sm space-y-1 mb-6">
                     {product.features.map((feature, idx) => (
@@ -164,16 +166,18 @@ const Products = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-lg font-semibold text-industrial-blue">{product.price}</span>
-                  </div>
-                  <div className="space-y-2">
-                    <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
-                      Request Quote
-                    </Button>
-                    <Button variant="outline" className="w-full border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
-                      View Details
-                    </Button>
+                  <div className="mt-auto pt-2">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
+                          Request Quote
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <h2 className="text-2xl font-bold mb-4 text-industrial-dark">Request a Quote</h2>
+                        <RequestQuoteForm productName={product.name} />
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </CardContent>
               </Card>
