@@ -13,21 +13,34 @@ import { useState } from "react";
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    machineCategory: '',
+    productionVolume: '',
+    projectDetails: ''
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
 
   const handleQuoteSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
     const quoteData = {
-      first_name: formData.get('firstName') as string,
-      last_name: formData.get('lastName') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      company_name: formData.get('company') as string,
-      machine_category: formData.get('machineCategory') as string,
-      production_volume: formData.get('productionVolume') as string,
-      project_details: formData.get('projectDetails') as string,
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      company_name: formData.company,
+      machine_category: formData.machineCategory,
+      production_volume: formData.productionVolume,
+      project_details: formData.projectDetails,
     };
 
     try {
@@ -43,7 +56,16 @@ const Contact = () => {
       });
       
       // Reset form
-      e.currentTarget.reset();
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        machineCategory: '',
+        productionVolume: '',
+        projectDetails: ''
+      });
     } catch (error) {
       console.error('Error submitting quote:', error);
       toast({
@@ -240,28 +262,55 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-industrial-dark">First Name *</label>
-                      <Input name="firstName" placeholder="Your first name" required />
+                      <Input 
+                        value={formData.firstName} 
+                        onChange={(e) => handleInputChange('firstName', e.target.value)}
+                        placeholder="Your first name" 
+                        required 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-industrial-dark">Last Name *</label>
-                      <Input name="lastName" placeholder="Your last name" required />
+                      <Input 
+                        value={formData.lastName}
+                        onChange={(e) => handleInputChange('lastName', e.target.value)}
+                        placeholder="Your last name" 
+                        required 
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Business Email *</label>
-                    <Input name="email" type="email" placeholder="your.email@company.com" required />
+                    <Input 
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      type="email" 
+                      placeholder="your.email@company.com" 
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Phone *</label>
-                    <Input name="phone" type="tel" placeholder="+961 XX XXX XXX" required />
+                    <Input 
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      type="tel" 
+                      placeholder="+961 XX XXX XXX" 
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Company Name *</label>
-                    <Input name="company" placeholder="Your company name" required />
+                    <Input 
+                      value={formData.company}
+                      onChange={(e) => handleInputChange('company', e.target.value)}
+                      placeholder="Your company name" 
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Machine Category</label>
-                    <Select name="machineCategory">
+                    <Select value={formData.machineCategory} onValueChange={(value) => handleInputChange('machineCategory', value)}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select machinery type" />
                       </SelectTrigger>
@@ -279,7 +328,7 @@ const Contact = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Production Volume</label>
-                    <Select name="productionVolume">
+                    <Select value={formData.productionVolume} onValueChange={(value) => handleInputChange('productionVolume', value)}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select production volume" />
                       </SelectTrigger>
@@ -294,7 +343,8 @@ const Contact = () => {
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-industrial-dark">Project Details *</label>
                     <Textarea 
-                      name="projectDetails"
+                      value={formData.projectDetails}
+                      onChange={(e) => handleInputChange('projectDetails', e.target.value)}
                       placeholder="Describe your requirements, timeline, and any specific needs..."
                       rows={4}
                       required
