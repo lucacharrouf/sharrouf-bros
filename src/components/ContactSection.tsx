@@ -2,9 +2,80 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    machineCategory: '',
+    productionVolume: '',
+    projectDetails: ''
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleQuoteSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const quoteData = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      company_name: formData.company,
+      machine_category: formData.machineCategory,
+      production_volume: formData.productionVolume,
+      project_details: formData.projectDetails,
+    };
+
+    try {
+      const { error } = await supabase
+        .from('requested_quotes')
+        .insert([quoteData]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Quote Request Submitted",
+        description: "Thank you! We'll get back to you within 24 hours with a detailed quote.",
+      });
+      
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        machineCategory: '',
+        productionVolume: '',
+        projectDetails: ''
+      });
+    } catch (error) {
+      console.error('Error submitting quote:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit quote request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -103,42 +174,104 @@ const ContactSection = () => {
               <CardTitle className="text-industrial-dark">Request a Quote</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleQuoteSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">First Name</label>
-                    <Input placeholder="Your first name" />
+                    <label className="text-sm font-medium text-industrial-dark">First Name *</label>
+                    <Input 
+                      value={formData.firstName} 
+                      onChange={(e) => handleInputChange('firstName', e.target.value)}
+                      placeholder="Your first name" 
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Last Name</label>
-                    <Input placeholder="Your last name" />
+                    <label className="text-sm font-medium text-industrial-dark">Last Name *</label>
+                    <Input 
+                      value={formData.lastName}
+                      onChange={(e) => handleInputChange('lastName', e.target.value)}
+                      placeholder="Your last name" 
+                      required 
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-industrial-dark">Email</label>
-                  <Input type="email" placeholder="your.email@company.com" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-industrial-dark">Phone</label>
-                  <Input type="tel" placeholder="+961 XX XXX XXX" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-industrial-dark">Company</label>
-                  <Input placeholder="Your company name" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-industrial-dark">Machine Type of Interest</label>
-                  <Input placeholder="Panel saw, Edge bander, CNC router, etc." />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-industrial-dark">Message</label>
-                  <Textarea 
-                    placeholder="Tell us about your requirements, production volume, and timeline..."
-                    rows={4}
+                  <label className="text-sm font-medium text-industrial-dark">Business Email *</label>
+                  <Input 
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    type="email" 
+                    placeholder="your.email@company.com" 
+                    required 
                   />
                 </div>
-                <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
-                  Send Quote Request
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-industrial-dark">Phone *</label>
+                  <Input 
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    type="tel" 
+                    placeholder="+961 XX XXX XXX" 
+                    required 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-industrial-dark">Company Name *</label>
+                  <Input 
+                    value={formData.company}
+                    onChange={(e) => handleInputChange('company', e.target.value)}
+                    placeholder="Your company name" 
+                    required 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-industrial-dark">Machine Category</label>
+                  <Select value={formData.machineCategory} onValueChange={(value) => handleInputChange('machineCategory', value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select machinery type" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white">
+                      <SelectItem value="panel-saws">Panel Saws</SelectItem>
+                      <SelectItem value="edge-banders">Edge Banders</SelectItem>
+                      <SelectItem value="cnc-routers">CNC Routers</SelectItem>
+                      <SelectItem value="boring-machines">Boring Machines</SelectItem>
+                      <SelectItem value="moulders">Moulders</SelectItem>
+                      <SelectItem value="sanders">Sanders</SelectItem>
+                      <SelectItem value="multiple">Multiple Machines</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-industrial-dark">Production Volume</label>
+                  <Select value={formData.productionVolume} onValueChange={(value) => handleInputChange('productionVolume', value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select production volume" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white">
+                      <SelectItem value="small">Small (1-10 pieces/day)</SelectItem>
+                      <SelectItem value="medium">Medium (10-50 pieces/day)</SelectItem>
+                      <SelectItem value="large">Large (50+ pieces/day)</SelectItem>
+                      <SelectItem value="industrial">Industrial Scale</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-industrial-dark">Project Details *</label>
+                  <Textarea 
+                    value={formData.projectDetails}
+                    onChange={(e) => handleInputChange('projectDetails', e.target.value)}
+                    placeholder="Describe your requirements, timeline, and any specific needs..."
+                    rows={4}
+                    required
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-industrial-blue hover:bg-industrial-blue/90"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Request Quote"}
                 </Button>
               </form>
             </CardContent>
