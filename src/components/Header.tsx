@@ -4,18 +4,20 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t, isRTL } = useLanguage();
 
   const navigationItems = [
-    { name: "Home", href: "/" },
-    { name: "Products", href: "/products" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Locations", href: "/locations" },
-    { name: "Contact", href: "/contact" },
+    { name: t('nav.home'), href: "/" },
+    { name: t('nav.products'), href: "/products" },
+    { name: t('nav.services'), href: "/services" },
+    { name: t('nav.about'), href: "/about" },
+    { name: t('nav.locations'), href: "/locations" },
+    { name: t('nav.contact'), href: "/contact" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -35,29 +37,43 @@ const Header = () => {
               <span>+961 1 234 567</span>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-industrial-gray">Language:</span>
-            <Button variant="ghost" size="sm" className="text-xs px-2 py-1">EN</Button>
-            <Button variant="ghost" size="sm" className="text-xs px-2 py-1">العربية</Button>
+          <div className={`flex items-center space-x-2 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`}>
+            <span className="text-xs text-industrial-gray">{t('nav.language')}</span>
+            <Button 
+              variant={language === 'en' ? 'default' : 'ghost'} 
+              size="sm" 
+              className="text-xs px-2 py-1"
+              onClick={() => setLanguage('en')}
+            >
+              EN
+            </Button>
+            <Button 
+              variant={language === 'ar' ? 'default' : 'ghost'} 
+              size="sm" 
+              className="text-xs px-2 py-1"
+              onClick={() => setLanguage('ar')}
+            >
+              العربية
+            </Button>
           </div>
         </div>
 
         {/* Main navigation */}
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-3">
+        <div className={`flex justify-between items-center py-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Link to="/" className={`flex items-center space-x-3 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`}>
             <img 
               src="/images/SBlogo.jpeg" 
               alt="Sharrouf Bros Logo" 
               className="w-12 h-12 object-cover rounded-t-md"
             />
-            <div>
-              <h1 className="text-xl font-bold text-industrial-dark">Sharrouf Bros</h1>
-              <p className="text-sm text-industrial-gray">SCM Authorized Dealer</p>
+            <div className={isRTL ? 'text-right' : ''}>
+              <h1 className="text-xl font-bold text-industrial-dark">{t('company.name')}</h1>
+              <p className="text-sm text-industrial-gray">{t('company.tagline')}</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className={`hidden md:flex items-center space-x-8 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`}>
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
@@ -70,7 +86,7 @@ const Header = () => {
               </Link>
             ))}
             <Button className="bg-industrial-blue hover:bg-industrial-blue/90">
-              Get Quote
+              {t('nav.getQuote')}
             </Button>
           </nav>
 
@@ -98,7 +114,7 @@ const Header = () => {
                   </Link>
                 ))}
                 <Button className="bg-industrial-blue hover:bg-industrial-blue/90 mt-4">
-                  Get Quote
+                  {t('nav.getQuote')}
                 </Button>
               </div>
             </SheetContent>

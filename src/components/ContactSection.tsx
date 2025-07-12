@@ -7,9 +7,11 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { t, isRTL } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -49,8 +51,8 @@ const ContactSection = () => {
       if (error) throw error;
 
       toast({
-        title: "Quote Request Submitted",
-        description: "Thank you! We'll get back to you within 24 hours with a detailed quote.",
+        title: t('contact.success'),
+        description: t('contact.success'),
       });
       
       // Reset form
@@ -68,7 +70,7 @@ const ContactSection = () => {
       console.error('Error submitting quote:', error);
       toast({
         title: "Error",
-        description: "Failed to submit quote request. Please try again.",
+        description: t('contact.error'),
         variant: "destructive",
       });
     } finally {
@@ -171,26 +173,26 @@ const ContactSection = () => {
           {/* Contact Form */}
           <Card className="machinery-shadow">
             <CardHeader>
-              <CardTitle className="text-industrial-dark">Request a Quote</CardTitle>
+              <CardTitle className="text-industrial-dark">{t('contact.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <form className="space-y-6" onSubmit={handleQuoteSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">First Name *</label>
+                    <label className="text-sm font-medium text-industrial-dark">{t('contact.firstName')} *</label>
                     <Input 
                       value={formData.firstName} 
                       onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      placeholder="Your first name" 
+                      placeholder={t('contact.firstName')} 
                       required 
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Last Name *</label>
+                    <label className="text-sm font-medium text-industrial-dark">{t('contact.lastName')} *</label>
                     <Input 
                       value={formData.lastName}
                       onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      placeholder="Your last name" 
+                      placeholder={t('contact.lastName')} 
                       required 
                     />
                   </div>
@@ -271,7 +273,7 @@ const ContactSection = () => {
                   className="w-full bg-industrial-blue hover:bg-industrial-blue/90"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Request Quote"}
+                  {isSubmitting ? t('contact.sending') : t('contact.sendRequest')}
                 </Button>
               </form>
             </CardContent>
