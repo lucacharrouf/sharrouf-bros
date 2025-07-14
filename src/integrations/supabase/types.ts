@@ -193,9 +193,34 @@ export type Database = {
           },
         ]
       }
+      machine_categories: {
+        Row: {
+          id: number
+          name: string
+          description: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          name: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          name?: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       machines: {
         Row: {
           brand: string
+          category_id: number | null
           created_at: string | null
           final_cost: number | null
           model: string | null
@@ -212,6 +237,7 @@ export type Database = {
         }
         Insert: {
           brand: string
+          category_id?: number | null
           created_at?: string | null
           final_cost?: number | null
           model?: string | null
@@ -230,6 +256,7 @@ export type Database = {
         }
         Update: {
           brand?: string
+          category_id?: number | null
           created_at?: string | null
           final_cost?: number | null
           model?: string | null
@@ -246,7 +273,15 @@ export type Database = {
           transport_costs?: number | null
           year?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "machines_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "machine_categories"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       payments: {
         Row: {

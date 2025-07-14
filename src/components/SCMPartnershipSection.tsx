@@ -20,31 +20,17 @@ const SCMPartnershipSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <Card className="machinery-shadow border-0">
-              <CardContent className="p-8">
-                <div className="bg-white rounded-lg flex items-center justify-center min-h-[200px] p-4">
-                  <div className="text-center w-full">
-                    <img 
-                      src="https://www.scmgroup.com/images/scm-logo.png" 
-                      alt="SCM Woodworking Technology Logo" 
-                      className="w-full h-auto mx-auto max-w-md"
-                      onError={(e) => {
-                        // Fallback to text if image fails to load
-                        const target = e.currentTarget as HTMLImageElement;
-                        target.style.display = 'none';
-                        const fallback = target.nextElementSibling as HTMLElement;
-                        if (fallback) fallback.style.display = 'block';
-                      }}
-                    />
-                    <div className="hidden">
-                      <div className="text-6xl font-bold text-industrial-dark mb-2">SCM</div>
-                      <div className="text-lg text-industrial-gray">Authorized Dealer</div>
-                      <div className="w-16 h-1 bg-industrial-blue mx-auto mt-4"></div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Embedded YouTube Video replaces the card */}
+            <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg bg-black flex items-center justify-center">
+              <iframe
+                src="https://www.youtube.com/embed/pTfEqf6eJlg?start=27&autoplay=1&mute=1"
+                title="SCM Group - Morbidelli m100/200 CNC Machining Centre"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
           </div>
 
           <div className="space-y-8">

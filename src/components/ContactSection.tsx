@@ -39,9 +39,9 @@ const ContactSection = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  <Button className="mt-4 bg-italian-green hover:bg-italian-green/90">
+                <Button className="mt-4 bg-italian-green hover:bg-italian-green/90">
                     WhatsApp Now
-                  </Button>
+                </Button>
                 </a>
               </CardContent>
             </Card>
@@ -59,9 +59,9 @@ const ContactSection = () => {
                   Send us your requirements and we'll respond within 24 hours
                 </p>
                 <a href="mailto:info@sharroufbros.com">
-                  <Button variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
-                    Send Email
-                  </Button>
+                <Button variant="outline" className="border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white">
+                  Send Email
+                </Button>
                 </a>
               </CardContent>
             </Card>

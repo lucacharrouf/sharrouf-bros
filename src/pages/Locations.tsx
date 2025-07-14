@@ -47,7 +47,7 @@ const Locations = () => {
         "Regional Distribution Hub",
         "Technical Training"
       ],
-      image: "https://images.unsplash.com/photo-1587560699386-d8f3a8b0b4ea?w=600&h=400&fit=crop",
+      image: "/images/showroom.jpeg",
       coordinates: { lat: 33.5067, lng: 35.8431 }
     }
   ];
@@ -91,7 +91,7 @@ const Locations = () => {
                       <img 
                         src={location.image} 
                         alt={location.name}
-                        className="w-full h-64 object-cover"
+                        className="w-full h-auto max-w-full rounded-lg"
                       />
                       <div className="absolute inset-0 bg-black/20"></div>
                     </div>
