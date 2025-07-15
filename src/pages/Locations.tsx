@@ -25,7 +25,7 @@ const Locations = () => {
         "Technical Consultation",
         "Financing Department"
       ],
-      image: "https://images.unsplash.com/photo-1606142969519-89f70c1b5b53?w=600&h=400&fit=crop",
+      image: "/images/mkalles.jpeg",
       coordinates: { lat: 33.8938, lng: 35.5018 }
     },
     {

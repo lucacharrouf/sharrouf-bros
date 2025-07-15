@@ -186,71 +186,9 @@ const Contact = () => {
       {/* Contact Forms */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* General Contact Form */}
-            <Card className="machinery-shadow">
-              <CardHeader>
-                <CardTitle className="text-2xl text-industrial-dark">Send Us a Message</CardTitle>
-                <p className="text-industrial-gray">
-                  General inquiries and information requests
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-industrial-dark">First Name *</label>
-                      <Input placeholder="Your first name" required />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-industrial-dark">Last Name *</label>
-                      <Input placeholder="Your last name" required />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Email *</label>
-                    <Input type="email" placeholder="your.email@company.com" required />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Phone</label>
-                    <Input type="tel" placeholder="+961 XX XXX XXX" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Company</label>
-                    <Input placeholder="Your company name" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Inquiry Type</label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select inquiry type" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white">
-                        {inquiryTypes.map((type) => (
-                          <SelectItem key={type} value={type.toLowerCase().replace(/\s+/g, '-')}>
-                            {type}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-industrial-dark">Message *</label>
-                    <Textarea 
-                      placeholder="Tell us about your requirements..."
-                      rows={4}
-                      required
-                    />
-                  </div>
-                  <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
+          <div className="flex justify-center">
             {/* Quote Request Form */}
-            <Card className="machinery-shadow">
+            <Card className="machinery-shadow w-full max-w-xl">
               <CardHeader>
                 <CardTitle className="text-2xl text-industrial-dark">Request a Quote</CardTitle>
                 <p className="text-industrial-gray">

@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Phone, Mail } from "lucide-react";
+import RequestQuoteForm from "@/components/RequestQuoteForm";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +15,6 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
     { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
     { name: "Locations", href: "/locations" },
     { name: "Contact", href: "/contact" },
   ];
@@ -34,11 +35,6 @@ const Header = () => {
               <Phone className="h-4 w-4" />
               <span>+961 1 234 567</span>
             </div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-industrial-gray">Language:</span>
-            <Button variant="ghost" size="sm" className="text-xs px-2 py-1">EN</Button>
-            <Button variant="ghost" size="sm" className="text-xs px-2 py-1">العربية</Button>
           </div>
         </div>
 
@@ -69,9 +65,19 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Button className="bg-industrial-blue hover:bg-industrial-blue/90">
-              Get Quote
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="bg-industrial-blue hover:bg-industrial-blue/90">
+                  Get Quote
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-industrial-dark">Request a Free Quote</DialogTitle>
+                </DialogHeader>
+                <RequestQuoteForm />
+              </DialogContent>
+            </Dialog>
           </nav>
 
           {/* Mobile Navigation */}
@@ -97,9 +103,19 @@ const Header = () => {
                     {item.name}
                   </Link>
                 ))}
-                <Button className="bg-industrial-blue hover:bg-industrial-blue/90 mt-4">
-                  Get Quote
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="bg-industrial-blue hover:bg-industrial-blue/90 mt-4">
+                      Get Quote
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold text-industrial-dark">Request a Free Quote</DialogTitle>
+                    </DialogHeader>
+                    <RequestQuoteForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </SheetContent>
           </Sheet>

@@ -10,8 +10,8 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-industrial-blue rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">SB</span>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                <img src="/images/SBlogo.jpeg" alt="Sharrouf Bros Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="text-lg font-bold">Sharrouf Bros</h3>
@@ -22,11 +22,6 @@ const Footer = () => {
               Premium Italian woodworking machinery for the Middle East. 
               Over 15 years of excellence in sales, service, and support.
             </p>
-            <div className="flex space-x-2">
-              <div className="w-6 h-4 bg-italian-green rounded-sm"></div>
-              <div className="w-6 h-4 bg-white rounded-sm"></div>
-              <div className="w-6 h-4 bg-italian-red rounded-sm"></div>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -36,7 +31,6 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
               <li><Link to="/products" className="text-gray-300 hover:text-white transition-colors">Products</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors">Services</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/locations" className="text-gray-300 hover:text-white transition-colors">Locations</Link></li>
               <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
             </ul>

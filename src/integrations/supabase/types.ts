@@ -223,6 +223,8 @@ export type Database = {
           category_id: number | null
           created_at: string | null
           final_cost: number | null
+          image_url: string | null
+          link: string | null
           model: string | null
           notes: string | null
           purchase_currency: Database["public"]["Enums"]["currency_code"] | null
@@ -240,6 +242,8 @@ export type Database = {
           category_id?: number | null
           created_at?: string | null
           final_cost?: number | null
+          image_url?: string | null
+          link?: string | null
           model?: string | null
           notes?: string | null
           purchase_currency?:
@@ -259,6 +263,8 @@ export type Database = {
           category_id?: number | null
           created_at?: string | null
           final_cost?: number | null
+          image_url?: string | null
+          link?: string | null
           model?: string | null
           notes?: string | null
           purchase_currency?:

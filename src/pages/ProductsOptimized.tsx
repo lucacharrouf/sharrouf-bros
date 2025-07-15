@@ -8,10 +8,9 @@ import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "@/hooks/useProducts";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AlertCircle, RefreshCw, ExternalLink, Image as ImageIcon } from "lucide-react";
-import MachineImage from "@/components/MachineImage";
+import { AlertCircle, RefreshCw } from "lucide-react";
 
-const Products = () => {
+const ProductsOptimized = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { machines, categories, brands, conditions, loading, error, refetch } = useProducts();
   
@@ -289,12 +288,6 @@ const Products = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredMachines.map((machine, idx) => (
                   <Card key={`${machine.serial_no}-${idx}`} className="machinery-shadow hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full flex flex-col">
-                    {/* Image Section */}
-                    <MachineImage
-                      imageUrl={machine.image_url}
-                      alt={`${machine.model || machine.brand} - ${machine.serial_no}`}
-                    />
-
                     <CardHeader>
                       <CardTitle className="text-industrial-dark">{machine.model || "Unknown Model"}</CardTitle>
                       <div className="flex flex-wrap gap-2">
@@ -304,30 +297,10 @@ const Products = () => {
                         </Badge>
                       </div>
                     </CardHeader>
-                    <CardContent className="flex-1 flex flex-col">
-                      <p className="text-sm text-industrial-gray mb-4">
+                    <CardContent className="flex-1">
+                      <p className="text-sm text-industrial-gray">
                         Serial: {machine.serial_no}
                       </p>
-                      
-                      {/* Action Buttons */}
-                      <div className="mt-auto flex gap-2">
-                        {machine.link && (
-                          <Button 
-                            asChild
-                            className="flex-1 bg-industrial-blue hover:bg-industrial-blue/90 text-white"
-                          >
-                            <a 
-                              href={machine.link} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2"
-                            >
-                              <ExternalLink className="h-4 w-4" />
-                              View Details
-                            </a>
-                          </Button>
-                        )}
-                      </div>
                     </CardContent>
                   </Card>
                 ))}
@@ -342,4 +315,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsOptimized; 

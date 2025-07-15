@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface RequestQuoteFormProps {
   productName?: string;
@@ -28,6 +30,7 @@ const productionVolumes = [
 ];
 
 export default function RequestQuoteForm({ productName, onSuccess }: RequestQuoteFormProps) {
+  const { toast } = useToast();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -45,8 +48,61 @@ export default function RequestQuoteForm({ productName, onSuccess }: RequestQuot
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    const quoteData = {
+      first_name: form.firstName,
+      last_name: form.lastName,
+      email: form.email,
+      phone: form.phone,
+      company_name: form.company,
+      machine_category: form.machineCategory,
+      production_volume: form.productionVolume,
+      project_details: form.projectDetails,
+    };
+
+    try {
+      const { error } = await supabase
+        .from('requested_quotes')
+        .insert([quoteData]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Quote Request Submitted",
+        description: "Thank you! We'll get back to you within 24 hours with a detailed quote.",
+      });
+      
+      setSuccess(true);
+      // Reset form
+      setForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        machineCategory: productName || "",
+        productionVolume: "",
+        projectDetails: ""
+      });
+      
+      if (onSuccess) onSuccess();
+    } catch (error) {
+      console.error('Error submitting quote:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit quote request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       <div className="grid md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <label className="text-sm font-medium text-industrial-dark">First Name *</label>
