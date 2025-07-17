@@ -9,13 +9,17 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-                <img src="/images/SBlogo.jpeg" alt="Sharrouf Bros Logo" className="w-full h-full object-contain" />
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-sm">
+                <img 
+                  src="/images/SBlogo.jpeg" 
+                  alt="Sharrouf Bros Logo" 
+                  className="w-12 h-12 object-contain transition-transform duration-300 hover:scale-110" 
+                />
               </div>
               <div>
-                <h3 className="text-lg font-bold">Sharrouf Bros</h3>
-                <p className="text-sm text-gray-400">SCM Authorized Dealer</p>
+                <h3 className="text-xl font-bold text-white">Sharrouf Bros</h3>
+                <p className="text-sm text-gray-300 font-medium">SCM Authorized Dealer</p>
               </div>
             </div>
             <p className="text-gray-300 mb-4">

@@ -11,7 +11,7 @@ const ProductsShowcase = () => {
       image: "/images/beam_saw.avif",
       badge: "Best Seller",
       features: ["PC/PLC Control System", "Panel Stack Cutting", "Flexstore Integration"],
-      categoryFilter: "Panel Saws",
+      categoryFilter: "Beam saws",
     },
     {
       name: "Edge Banders",
@@ -19,7 +19,7 @@ const ProductsShowcase = () => {
       image: "/images/edge-bander.avif",
       badge: "New Arrival",
       features: ["Electronic Touch Technology", "Multi-Shift Operation", "Flexible Integration"],
-      categoryFilter: "Edge Banders",
+      categoryFilter: "Edge banders",
     },
     {
       name: "CNC Routers",
@@ -27,7 +27,7 @@ const ProductsShowcase = () => {
       image: "/images/CNC.avif",
       badge: "High Tech",
       features: ["5-Axis Capability", "Automatic Tool Change", "Vacuum Clamping"],
-      categoryFilter: "CNC Routers",
+      categoryFilter: "CNC Machining Centres",
     },
     {
       name: "Drilling Machines",
@@ -35,7 +35,7 @@ const ProductsShowcase = () => {
       image: "/images/boring.avif",
       badge: "Professional",
       features: ["Multi-spindle", "Pneumatic Clamping", "Quick Setup"],
-      categoryFilter: "Boring Machines",
+      categoryFilter: "Drilling solutions",
     },
   ];
 

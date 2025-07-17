@@ -9,9 +9,11 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useProducts } from "@/hooks/useProducts";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { categories } = useProducts();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -80,19 +82,9 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      title: "Phone Support",
-      icon: Phone,
-      primary: "+961 71 667 838 (Beirut)",
-      secondary: "+961 71 667 838 (Rachaya)", 
-      description: "Speak directly with our experts",
-      hours: "Mon-Fri: 8:00 AM - 6:00 PM",
-      action: "Call Now",
-      color: "bg-italian-green"
-    },
-    {
       title: "Email Support", 
       icon: Mail,
-      primary: "info@sharroufbros.com",
+      primary: "sales@sharroufbros.com",
       secondary: "Response within 24 hours",
       description: "Send detailed inquiries",
       hours: "24/7 Response",
@@ -108,16 +100,6 @@ const Contact = () => {
       hours: "Mon-Fri: 8:00 AM - 8:00 PM",
       action: "Chat Now",
       color: "bg-green-600"
-    },
-    {
-      title: "Visit Showrooms",
-      icon: MapPin,
-      primary: "Beirut & Rachaya",
-      secondary: "See machinery in action",
-      description: "Schedule a personal visit",
-      hours: "By appointment",
-      action: "Schedule Visit",
-      color: "bg-industrial-gray"
     }
   ];
 
@@ -253,14 +235,11 @@ const Contact = () => {
                         <SelectValue placeholder="Select machinery type" />
                       </SelectTrigger>
                       <SelectContent className="bg-white">
-                        <SelectItem value="panel-saws">Panel Saws</SelectItem>
-                        <SelectItem value="edge-banders">Edge Banders</SelectItem>
-                        <SelectItem value="cnc-routers">CNC Routers</SelectItem>
-                        <SelectItem value="boring-machines">Boring Machines</SelectItem>
-                        <SelectItem value="moulders">Moulders</SelectItem>
-                        <SelectItem value="sanders">Sanders</SelectItem>
-                        <SelectItem value="multiple">Multiple Machines</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        {categories.map(category => (
+                          <SelectItem key={category.id} value={category.name}>
+                            {category.name}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>

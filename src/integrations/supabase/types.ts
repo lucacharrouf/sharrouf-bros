@@ -193,24 +193,24 @@ export type Database = {
           },
         ]
       }
-      machine_categories: {
+      machinery_categories: {
         Row: {
           id: number
-          name: string
+          category_name: string
           description: string | null
           created_at: string
           updated_at: string
         }
         Insert: {
           id?: number
-          name: string
+          category_name: string
           description?: string | null
           created_at?: string
           updated_at?: string
         }
         Update: {
           id?: number
-          name?: string
+          category_name?: string
           description?: string | null
           created_at?: string
           updated_at?: string
@@ -284,7 +284,7 @@ export type Database = {
             foreignKeyName: "machines_category_id_fkey"
             columns: ["category_id"]
             isOneToOne: false
-            referencedRelation: "machine_categories"
+            referencedRelation: "machinery_categories"
             referencedColumns: ["id"]
           },
         ]

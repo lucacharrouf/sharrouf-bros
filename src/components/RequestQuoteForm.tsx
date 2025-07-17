@@ -5,22 +5,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useProducts } from "@/hooks/useProducts";
 
 interface RequestQuoteFormProps {
   productName?: string;
   onSuccess?: () => void;
 }
-
-const categories = [
-  "Panel Saws",
-  "Edge Banders",
-  "CNC Routers",
-  "Boring Machines",
-  "Moulders",
-  "Sanders",
-  "Multiple Machines",
-  "Other"
-];
 
 const productionVolumes = [
   { value: "small", label: "Small (1-10 pieces/day)" },
@@ -31,6 +21,7 @@ const productionVolumes = [
 
 export default function RequestQuoteForm({ productName, onSuccess }: RequestQuoteFormProps) {
   const { toast } = useToast();
+  const { categories } = useProducts();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -133,7 +124,7 @@ export default function RequestQuoteForm({ productName, onSuccess }: RequestQuot
           </SelectTrigger>
           <SelectContent className="bg-white">
             {categories.map(cat => (
-              <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+              <SelectItem key={cat.id} value={cat.name}>{cat.name}</SelectItem>
             ))}
           </SelectContent>
         </Select>

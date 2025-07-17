@@ -198,8 +198,8 @@ const HeroSection = () => {
                   ></iframe>
                 ) : (
                   <img
-                    src="/mkalles.jpg"
-                    alt="Mkalles fallback"
+                    src="/images/mkalles.jpeg"
+                    alt="Mkalles Showroom"
                     className="w-full h-full object-cover"
                   />
                 )}

@@ -7,9 +7,11 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useProducts } from "@/hooks/useProducts";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { categories } = useProducts();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -231,14 +233,11 @@ const ContactSection = () => {
                       <SelectValue placeholder="Select machinery type" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
-                      <SelectItem value="panel-saws">Panel Saws</SelectItem>
-                      <SelectItem value="edge-banders">Edge Banders</SelectItem>
-                      <SelectItem value="cnc-routers">CNC Routers</SelectItem>
-                      <SelectItem value="boring-machines">Boring Machines</SelectItem>
-                      <SelectItem value="moulders">Moulders</SelectItem>
-                      <SelectItem value="sanders">Sanders</SelectItem>
-                      <SelectItem value="multiple">Multiple Machines</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      {categories.map(category => (
+                        <SelectItem key={category.id} value={category.name}>
+                          {category.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>

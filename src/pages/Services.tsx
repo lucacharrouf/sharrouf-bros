@@ -65,48 +65,6 @@ const Services = () => {
     }
   ];
 
-  const maintenancePackages = [
-    {
-      name: "Basic Care",
-      price: "Starting at $500/month",
-      features: [
-        "Quarterly Inspections",
-        "Basic Preventive Maintenance",
-        "Emergency Support (Business Hours)",
-        "Parts Discount (10%)",
-        "Technical Phone Support"
-      ],
-      popular: false
-    },
-    {
-      name: "Professional Care",
-      price: "Starting at $1,200/month",
-      features: [
-        "Monthly Inspections",
-        "Complete Preventive Maintenance",
-        "Priority Emergency Support",
-        "Parts Discount (15%)",
-        "Annual Performance Optimization",
-        "Operator Training Sessions"
-      ],
-      popular: true
-    },
-    {
-      name: "Premium Care",
-      price: "Contact for Quote",
-      features: [
-        "Bi-weekly Inspections",
-        "Full Maintenance Coverage",
-        "24/7 Emergency Response",
-        "Parts Discount (20%)",
-        "Quarterly Performance Reviews",
-        "Unlimited Training & Consultation",
-        "Machine Upgrade Planning"
-      ],
-      popular: false
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -161,47 +119,6 @@ const Services = () => {
                   </div>
                   <Button className="w-full bg-industrial-blue hover:bg-industrial-blue/90" asChild>
                     <Link to="/contact">Learn More</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Maintenance Packages */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-industrial-dark mb-6">Maintenance Packages</h2>
-            <p className="text-xl text-industrial-gray max-w-3xl mx-auto">
-              Choose the maintenance package that best fits your operational needs and budget
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {maintenancePackages.map((pkg, index) => (
-              <Card key={index} className={`machinery-shadow hover:shadow-2xl transition-all duration-300 relative ${pkg.popular ? 'ring-2 ring-industrial-blue' : ''}`}>
-                {pkg.popular && (
-                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-industrial-blue text-white px-4 py-1">
-                    Most Popular
-                  </Badge>
-                )}
-                <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-industrial-dark">{pkg.name}</CardTitle>
-                  <div className="text-3xl font-bold text-industrial-blue mt-4">{pkg.price}</div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-2">
-                        <span className="text-italian-green font-bold">✓</span>
-                        <span className="text-industrial-gray">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className={`w-full ${pkg.popular ? 'bg-industrial-blue hover:bg-industrial-blue/90' : 'bg-industrial-gray hover:bg-industrial-gray/90'}`} asChild>
-                    <Link to="/contact">Select Package</Link>
                   </Button>
                 </CardContent>
               </Card>

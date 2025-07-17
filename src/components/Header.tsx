@@ -40,15 +40,19 @@ const Header = () => {
 
         {/* Main navigation */}
         <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-3">
-            <img 
-              src="/images/SBlogo.jpeg" 
-              alt="Sharrouf Bros Logo" 
-              className="w-12 h-12 object-cover rounded-t-md"
-            />
+          <Link to="/" className="flex items-center space-x-4 group">
+            <div className="relative">
+              <img 
+                src="/images/SBlogo.jpeg" 
+                alt="Sharrouf Bros Logo" 
+                className="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
             <div>
-              <h1 className="text-xl font-bold text-industrial-dark">Sharrouf Bros</h1>
-              <p className="text-sm text-industrial-gray">SCM Authorized Dealer</p>
+              <h1 className="text-2xl font-bold text-industrial-dark group-hover:text-industrial-blue transition-colors duration-300">
+                Sharrouf Bros
+              </h1>
+              <p className="text-sm text-industrial-gray font-medium">SCM Authorized Dealer</p>
             </div>
           </Link>
 

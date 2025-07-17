@@ -180,20 +180,44 @@ const Products = () => {
             {/* Brand Filter Tags */}
             <div className="flex-1">
               <h3 className="text-sm font-medium text-industrial-dark mb-3">Filter by Brand</h3>
+              
+              {/* SCM Featured Brand - Elevated and Prominent */}
+              <div className="mb-4">
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    variant={selectedBrand === null ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedBrand(null)}
+                    className={`transition-all duration-200 ${
+                      selectedBrand === null 
+                        ? "bg-industrial-blue text-white shadow-md" 
+                        : "text-industrial-gray hover:text-industrial-dark hover:bg-gray-100"
+                    }`}
+                  >
+                    All Brands
+                  </Button>
+                  
+                  {/* SCM Special Button */}
+                  {brands.includes('SCM') && (
+                    <Button
+                      variant={selectedBrand === 'SCM' ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedBrand(selectedBrand === 'SCM' ? null : 'SCM')}
+                      className={`transition-all duration-200 transform hover:scale-105 ${
+                        selectedBrand === 'SCM' 
+                          ? "bg-industrial-blue text-white shadow-lg border-2 border-industrial-blue" 
+                          : "text-industrial-dark hover:text-industrial-dark hover:bg-blue-50 border-2 border-industrial-blue bg-white font-semibold"
+                      }`}
+                    >
+                      SCM
+                    </Button>
+                  )}
+                </div>
+              </div>
+              
+              {/* Other Brands */}
               <div className="flex flex-wrap gap-2">
-                <Button
-                  variant={selectedBrand === null ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedBrand(null)}
-                  className={`transition-all duration-200 ${
-                    selectedBrand === null 
-                      ? "bg-industrial-blue text-white shadow-md" 
-                      : "text-industrial-gray hover:text-industrial-dark hover:bg-gray-100"
-                  }`}
-                >
-                  All Brands
-                </Button>
-                {brands.map((brand: string) => (
+                {brands.filter(brand => brand !== 'SCM').map((brand: string) => (
                   <Button
                     key={brand}
                     variant={selectedBrand === brand ? "default" : "outline"}

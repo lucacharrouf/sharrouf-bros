@@ -26,30 +26,6 @@ interface UseProductsReturn {
   refetch: () => Promise<void>;
 }
 
-// Category name mapping based on common woodworking machinery categories
-const CATEGORY_NAMES: Record<number, string> = {
-  1: 'Panel Saws',
-  2: 'Edge Banders', 
-  3: 'CNC Routers',
-  4: 'Boring Machines',
-  5: 'Sanding Machines',
-  6: 'Assembly Equipment',
-  7: 'Dust Collection',
-  8: 'Finishing Equipment',
-  9: 'Material Handling',
-  10: 'Safety Equipment',
-  11: 'Spare Parts',
-  12: 'Accessories',
-  13: 'Software & Controls',
-  14: 'Measurement Tools',
-  15: 'Workshop Equipment',
-  16: 'Panel Processing',
-  17: 'Woodworking Tools',
-  18: 'Industrial Machinery',
-  19: 'Production Lines',
-  20: 'Custom Solutions'
-};
-
 export const useProducts = (): UseProductsReturn => {
   const [machines, setMachines] = useState<Machine[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -91,44 +67,43 @@ export const useProducts = (): UseProductsReturn => {
     setError(null);
 
     try {
-      // Try to get cached data first
-      const cachedMachines = getCachedData('machines');
-      const cachedCategories = getCachedData('categories');
-      const cachedBrands = getCachedData('brands');
-      const cachedConditions = getCachedData('conditions');
+      // // Try to get cached data first
+      // const cachedMachines = getCachedData('machines');
+      // const cachedCategories = getCachedData('categories');
+      // const cachedBrands = getCachedData('brands');
+      // const cachedConditions = getCachedData('conditions');
 
-      if (cachedMachines && cachedCategories && cachedBrands && cachedConditions) {
-        setMachines(cachedMachines);
-        setCategories(cachedCategories);
-        setBrands(cachedBrands);
-        setConditions(cachedConditions);
-        setLoading(false);
-        return;
-      }
+      // if (cachedMachines && cachedCategories && cachedBrands && cachedConditions) {
+      //   setMachines(cachedMachines);
+      //   setCategories(cachedCategories);
+      //   setBrands(cachedBrands);
+      //   setConditions(cachedConditions);
+      //   setLoading(false);
+      //   return;
+      // }
 
-      // Fetch machines data with image_url and link fields
-      const machinesResult = await supabase
-        .from('machines')
-        .select('model, brand, status, category_id, serial_no, image_url, link')
-        .limit(1000);
+      // Fetch machines and categories in parallel
+      const [machinesResult, categoriesResult] = await Promise.all([
+        supabase
+          .from('machines')
+          .select('model, brand, status, category_id, serial_no, image_url, link')
+          .limit(1000),
+        supabase
+          .from('machinery_categories')
+          .select('id, category_name')
+          .order('category_name')
+      ]);
 
       if (machinesResult.error) throw machinesResult.error;
+      if (categoriesResult.error) throw categoriesResult.error;
 
       const machinesData = machinesResult.data || [];
-
-      // Extract categories from machines data with proper names
-      const categoryMap = new Map<number, Category>();
-      machinesData.forEach(machine => {
-        if (machine.category_id && !categoryMap.has(machine.category_id)) {
-          const categoryName = CATEGORY_NAMES[machine.category_id] || `Category ${machine.category_id}`;
-          categoryMap.set(machine.category_id, {
-            id: machine.category_id,
-            name: categoryName
-          });
-        }
-      });
       
-      const categoriesData = Array.from(categoryMap.values()).sort((a, b) => a.name.localeCompare(b.name));
+      // Transform categories to match the expected interface
+      const categoriesData = (categoriesResult.data || []).map(cat => ({
+        id: cat.id,
+        name: cat.category_name
+      }));
 
       // Process data efficiently
       const uniqueBrands = [...new Set(machinesData.map(m => m.brand).filter(Boolean))].sort();
