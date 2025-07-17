@@ -1,73 +1,96 @@
-# Welcome to your Lovable project
+# Sharrouf Bros - Premium Italian Woodworking Machinery
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/51eaf649-b119-4582-a308-815930647b5a
+Sharrouf Bros is an authorized SCM dealer for premium Italian woodworking machinery in the Middle East. This website provides information about our services, products, and contact details.
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/51eaf649-b119-4582-a308-815930647b5a) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Fast build tool and development server
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI library
+- **shadcn-ui** - Modern component library
+- **Tailwind CSS** - Utility-first CSS framework
+- **Supabase** - Backend as a service
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/51eaf649-b119-4582-a308-815930647b5a) and click on Share -> Publish.
+### Prerequisites
 
-## Can I connect a custom domain to my Lovable project?
+- Node.js (v18 or higher)
+- npm or yarn
 
-Yes, you can!
+### Installation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Clone the repository:
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd sharrouf-bros
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:8080`
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run test:performance` - Run performance tests
+- `npm run analyze` - Analyze bundle size
+
+## Development
+
+### Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── lib/           # Utility functions and configurations
+├── hooks/         # Custom React hooks
+└── types/         # TypeScript type definitions
+```
+
+### Code Style
+
+This project uses:
+- ESLint for code linting
+- Prettier for code formatting
+- TypeScript for type safety
+
+## Deployment
+
+This project is configured with GitHub Actions for automatic deployment to cPanel via FTP. The deployment workflow triggers on pushes to the main branch.
+
+### Environment Variables
+
+Make sure to set up the following environment variables in your deployment environment:
+- `FTP_SERVER` - Your cPanel FTP server address
+- `FTP_USERNAME` - Your FTP username  
+- `FTP_PASSWORD` - Your FTP password
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is proprietary to Sharrouf Bros.
