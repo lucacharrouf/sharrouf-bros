@@ -87,6 +87,7 @@ export const useProducts = (): UseProductsReturn => {
         supabase
           .from('machines')
           .select('model, brand, status, category_id, serial_no, image_url, link')
+          .eq('status_in_stock', 'in_stock')
           .limit(1000),
         supabase
           .from('machinery_categories')
