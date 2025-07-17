@@ -58,7 +58,9 @@ const HeroSection = () => {
     { name: "Togo", flag: "🇹🇬" },
     { name: "Camerun", flag: "🇨🇲" },
     { name: "Lebanon", flag: "🇱🇧" },
-    { name: "Nigeria", flag: "🇳🇬" }
+    { name: "Tanzania", flag: "🇹🇿" },
+    { name: "Nigeria", flag: "🇳🇬" },
+    { name: "Libia", flag: "🇱🇾" }
   ];
 
   const [currentCountryIndex, setCurrentCountryIndex] = useState(0);
