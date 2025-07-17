@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => ({
         // Chunk splitting for better caching
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-select', '@radix-ui/react-dialog', '@radix-ui/react-button'],
+          ui: ['@radix-ui/react-select', '@radix-ui/react-dialog'],
           supabase: ['@supabase/supabase-js'],
         },
       },

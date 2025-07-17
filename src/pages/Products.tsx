@@ -62,7 +62,7 @@ const Products = () => {
 
   // Memoized filtered machines for better performance
   const filteredMachines = useMemo(() => {
-    return machines.filter(machine => {
+    const filtered = machines.filter(machine => {
       if (selectedCategory && machine.category_id !== Number(selectedCategory)) {
         return false;
       }
@@ -73,6 +73,16 @@ const Products = () => {
         return false;
       }
       return true;
+    });
+
+    // Sort machines: those with available images first, then those without
+    return filtered.sort((a, b) => {
+      const aHasImage = a.image_url && a.image_url.trim() !== '';
+      const bHasImage = b.image_url && b.image_url.trim() !== '';
+      
+      if (aHasImage && !bHasImage) return -1;
+      if (!aHasImage && bHasImage) return 1;
+      return 0;
     });
   }, [machines, selectedCategory, selectedBrand, selectedCondition]);
 
@@ -305,10 +315,6 @@ const Products = () => {
                       </div>
                     </CardHeader>
                     <CardContent className="flex-1 flex flex-col">
-                      <p className="text-sm text-industrial-gray mb-4">
-                        Serial: {machine.serial_no}
-                      </p>
-                      
                       {/* Action Buttons */}
                       <div className="mt-auto flex gap-2">
                         {machine.link && (

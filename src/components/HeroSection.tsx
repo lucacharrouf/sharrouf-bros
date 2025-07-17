@@ -45,13 +45,20 @@ const HeroSection = () => {
     { name: "Lebanon", flag: "🇱🇧" },
     { name: "Syria", flag: "🇸🇾" },
     { name: "Kenya", flag: "🇰🇪" },
-    { name: "Egypt", flag: "🇪🇬" },
+    { name: "Lebanon", flag: "🇱🇧" },
+    { name: "Côte d'Ivoire", flag: "🇨🇮" },
     { name: "Jordan", flag: "🇯🇴" },
-    { name: "UAE", flag: "🇦🇪" },
+    { name: "Lebanon", flag: "🇱🇧" },
+    { name: "DRC", flag: "🇨🇩" },
     { name: "Saudi Arabia", flag: "🇸🇦" },
-    { name: "Iraq", flag: "🇮🇶" },
-    { name: "Morocco", flag: "🇲🇦" },
-    { name: "Tunisia", flag: "🇹🇳" }
+    { name: "Lebanon", flag: "🇱🇧" },
+    { name: "Congo", flag: "🇨🇬" },
+    { name: "Ghana", flag: "🇬🇭" },
+    { name: "Lebanon", flag: "🇱🇧" },
+    { name: "Togo", flag: "🇹🇬" },
+    { name: "Camerun", flag: "🇨🇲" },
+    { name: "Lebanon", flag: "🇱🇧" },
+    { name: "Nigeria", flag: "🇳🇬" }
   ];
 
   const [currentCountryIndex, setCurrentCountryIndex] = useState(0);
