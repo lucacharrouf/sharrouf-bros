@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -82,24 +82,48 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      title: "Email Support", 
-      icon: Mail,
-      primary: "sales@sharroufbros.com",
-      secondary: "Response within 24 hours",
-      description: "Send detailed inquiries",
-      hours: "24/7 Response",
-      action: "Send Email",
-      color: "bg-industrial-blue"
-    },
-    {
-      title: "WhatsApp Chat",
-      icon: Phone,
+      title: "WhatsApp",
+      icon: MessageCircle,
       primary: "+961 71 667 838",
       secondary: "Instant messaging support",
       description: "Quick questions and support",
       hours: "Mon-Fri: 8:00 AM - 8:00 PM",
-      action: "Chat Now",
-      color: "bg-green-600"
+      action: "Chat on WhatsApp",
+      color: "bg-green-600",
+      link: "https://wa.me/96171667838"
+    },
+    {
+      title: "Email Support",
+      icon: Mail,
+      primary: "info@sharroufbros.com",
+      secondary: "Response within 24 hours",
+      description: "Send detailed inquiries",
+      hours: "24/7 Response",
+      action: "Send Email",
+      color: "bg-industrial-blue",
+      link: "mailto:info@sharroufbros.com"
+    },
+    {
+      title: "Technical Support",
+      icon: Phone,
+      primary: "+961 76 667 839",
+      secondary: "tech-center@sharroufbros.com",
+      description: "Technical assistance and support",
+      hours: "Mon-Fri: 8:00 AM - 6:00 PM",
+      action: "Call Support",
+      color: "bg-orange-600",
+      link: "tel:+96176667839"
+    },
+    {
+      title: "Ask a Question",
+      icon: Mail,
+      primary: "+961 36 678 38",
+      secondary: "sales@sharroufbros.com",
+      description: "Sales inquiries and general questions",
+      hours: "Mon-Fri: 8:00 AM - 6:00 PM",
+      action: "Contact Sales",
+      color: "bg-purple-600",
+      link: "mailto:sales@sharroufbros.com"
     }
   ];
 
@@ -155,7 +179,10 @@ const Contact = () => {
                     <Clock className="h-4 w-4" />
                     <span>{method.hours}</span>
                   </div>
-                  <Button className={`w-full ${method.color} hover:opacity-90`}>
+                  <Button 
+                    className={`w-full ${method.color} hover:opacity-90`}
+                    onClick={() => window.open(method.link, '_blank')}
+                  >
                     {method.action}
                   </Button>
                 </CardContent>
