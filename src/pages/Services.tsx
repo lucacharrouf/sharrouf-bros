@@ -167,9 +167,6 @@ const Services = () => {
             <Button size="lg" className="bg-italian-green hover:bg-italian-green/90" asChild>
               <Link to="/contact">Schedule Service Consultation</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-industrial-dark" asChild>
-              <Link to="/contact">Get Quote</Link>
-            </Button>
           </div>
         </div>
       </section>

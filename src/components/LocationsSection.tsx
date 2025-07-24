@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const LocationsSection = () => {
   const locations = [
@@ -8,13 +8,15 @@ const LocationsSection = () => {
       name: "Beirut Showroom",
       address: "ICF Building - Mkalles-Mansourieh Main Road - Beirut, Lebanon",
       phone: "+961 71 667 838",
+      email: "info@sharroufbros.com",
       hours: "Mon-Sat: 8:00 AM - 6:00 PM",
       description: "Main showroom and service center with full machinery display",
     },
     {
       name: "Rachaya Service Center",
       address: "Main Road El Mhaidthe, Rachaya Bekaa, Lebanon", 
-      phone: "+961 71 667 838",
+      phone: "+961 3 667 838",
+      email: "sales@sharroufbros.com",
       hours: "Mon-Fri: 8:00 AM - 6:00 PM",
       description: "Service center specializing in maintenance and spare parts",
     },
@@ -52,6 +54,10 @@ const LocationsSection = () => {
                   <div className="flex items-center space-x-2">
                     <Phone className="h-4 w-4 text-industrial-gray" />
                     <span className="text-sm text-industrial-gray">{location.phone}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Mail className="h-4 w-4 text-industrial-gray" />
+                    <span className="text-sm text-industrial-gray">{location.email}</span>
                   </div>
                   <div className="text-sm text-industrial-gray whitespace-pre-line">
                     <strong>Hours:</strong><br />
