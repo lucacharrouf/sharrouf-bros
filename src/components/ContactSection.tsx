@@ -104,7 +104,7 @@ const ContactSection = () => {
               <CardContent>
                 <div className="space-y-2">
                   <p className="text-lg font-semibold">Beirut: +961 71 667 838</p>
-                  <p className="text-lg font-semibold">Rachaya: +961 71 667 838</p>
+                  <p className="text-lg font-semibold">Rachaya: +961 3 667 838</p>
                   <p className="text-industrial-gray">Mon-Fri: 8:00 AM - 6:00 PM</p>
                 </div>
                 <a 
