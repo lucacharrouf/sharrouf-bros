@@ -31,8 +31,8 @@ const Locations = () => {
     {
       name: "Rachaya Service Center",
       address: "Main Road El Mhaidthe, Rachaya Bekaa, Lebanon",
-      phone: "+961 71 667 838",
-      email: "info@sharroufbros.com", 
+      phone: "+961 3 667 838",
+      email: "sales@sharroufbros.com", 
       hours: {
         weekdays: "Monday - Friday: 8:00 AM - 6:00 PM",
         saturday: "",
@@ -218,7 +218,7 @@ const Locations = () => {
             </div>
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-2">Rachaya Showroom</h3>
-              <p className="text-gray-300">+961 71 667 838</p>
+              <p className="text-gray-300">+961 3 667 838</p>
             </div>
           </div>
         </div>
